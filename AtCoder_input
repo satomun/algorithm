@@ -1,0 +1,9 @@
+#整数を２つ入力⇒n m
+n,m = map(int,input().split())
+
+#整数を複数個、複数行入力⇒
+      #s_11 s_12 s_13,...
+      #s_12,s_22,s_23,...
+      #......
+s = [list(map(int, input().split())) for _ in range(n)]
+
