@@ -1,0 +1,12 @@
+# nまでの素数を全て求める関数（エラトステネスのふるい）
+
+def eratosthenes(n):
+    prime = []
+    data = [i+1 for i in range(1,n)]
+    limit = math.sqrt(n)
+    while True:
+        p = data[0]
+        if limit <= p:
+            return prime + data  # data:after limit data
+        prime.append(p)
+        data = [e for e in data if e % p != 0]
