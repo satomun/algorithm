@@ -1,0 +1,30 @@
+#Aに10万のリストを入力したときの結果、１０倍以上の差が出た
+n,k = map(int,input().split())
+A = list(map(int,input().split()))
+#-----------------------------------------
+#累積和で解くパターン
+s = [0]*(n+1)
+#O(N+K)で計算できる
+for i in range(1,n+1):
+    s[i] = s[i-1]+A[i-1]
+big = 0
+for i in range(n-k):
+    if big < (s[k+i]-s[i]):
+        big = s[k+i]-s[i]
+print(big)
+#実験結果
+#5998110
+#Wall time: 110 ms
+#-----------------------------------------
+#何も考えずfor文入れ子で回すパターン
+big = 0
+for i in range(n-k):
+    s = 0
+    for j in range(i,k+i):
+        s += A[j]
+        if big < s:
+            big = s
+print(big)
+#実験結果
+#5998110
+#Wall time: 1.34 s
